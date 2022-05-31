@@ -1,6 +1,7 @@
 package com.example.batch54.activities;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -16,6 +17,7 @@ public class StartActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().setStatusBarColor(Color.WHITE);
         ActivityStartBinding binding = ActivityStartBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
