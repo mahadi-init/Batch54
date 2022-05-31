@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "422225065572",
+    "project_id": "batch-54-fa8ec",
+    "storage_bucket": "batch-54-fa8ec.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:422225065572:android:b5daf325639823d1155171",
+        "android_client_info": {
+          "package_name": "com.example.batch54"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "422225065572-sfqvshh82a8539hskfrmul810il4v058.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBsiPGYLPd8OrqNQTdk08pXXt4F6J0kDMM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "422225065572-sfqvshh82a8539hskfrmul810il4v058.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
