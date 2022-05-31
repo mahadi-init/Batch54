@@ -8,4 +8,10 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="ic_launcher_custom_background">#342C5C</color>
+
+
+    <color name="blue_200">#7364BD</color>
+    <color name="blue_500">#7364BD</color>
+    <color name="blue_700">#54488F</color>
+    <color name="blue_900">#443A77</color>
 </resources>
