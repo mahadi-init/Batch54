@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.example.batch54.data.LoginInputsCheck;
+import com.example.batch54.models.LoginInputsCheck;
 import com.example.batch54.utils.validation.Validity;
 import com.google.firebase.auth.FirebaseAuth;
 
