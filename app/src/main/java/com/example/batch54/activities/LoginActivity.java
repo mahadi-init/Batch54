@@ -81,7 +81,7 @@ public class LoginActivity extends AppCompatActivity {
         viewmodel.isFailed().observe(this, aBoolean -> {
             if(aBoolean){
                 binding.progressbar.setVisibility(View.GONE);
-                Snackbar.make(binding.mainLayout, "Login Failed", Snackbar.LENGTH_SHORT).show();
+                Snackbar.make(binding.loginLayout, "Login Failed", Snackbar.LENGTH_SHORT).show();
             }
         });
     }
