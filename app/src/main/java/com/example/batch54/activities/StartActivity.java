@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
 import com.example.batch54.databinding.ActivityStartBinding;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class StartActivity extends AppCompatActivity {
 
@@ -30,6 +31,6 @@ public class StartActivity extends AppCompatActivity {
         new Handler(Looper.getMainLooper()).postDelayed(() -> {
             startActivity(new Intent(this, LoginActivity.class));
             finish();
-        },1500);
+        }, 1500);
     }
 }

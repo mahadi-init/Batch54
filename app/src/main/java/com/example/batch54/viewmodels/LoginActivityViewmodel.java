@@ -18,11 +18,6 @@ public class LoginActivityViewmodel extends ViewModel {
         return _isLoggedIn;
     }
 
-    private final MutableLiveData<Boolean> _loading = new MutableLiveData<>();
-    public LiveData<Boolean> loading() {
-        return _loading;
-    }
-
     private final MutableLiveData<Boolean> _isFailed = new MutableLiveData<>();
     public LiveData<Boolean> isFailed() {
         return _isFailed;
@@ -42,15 +37,8 @@ public class LoginActivityViewmodel extends ViewModel {
     }
 
     public void loginUsingFirebase(String email, String password) {
-        _loading.setValue(true);
         mAuth.signInWithEmailAndPassword(email, password)
-                .addOnSuccessListener(authResult -> {
-                    _isLoggedIn.setValue(true);
-                    _loading.setValue(false);
-                })
-                .addOnFailureListener(e -> {
-                    _isFailed.setValue(true);
-                    _loading.setValue(false);
-                });
+                .addOnSuccessListener(e -> _isLoggedIn.setValue(true))
+                .addOnFailureListener(e -> _isFailed.setValue(true));
     }
 }

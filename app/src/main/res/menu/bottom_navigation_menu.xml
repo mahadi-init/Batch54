@@ -13,10 +13,10 @@
         android:title="@string/upcoming_menu" />
 
     <item
-        android:id="@+id/topic_menu"
+        android:id="@+id/trending_menu"
         android:enabled="true"
         android:icon="@drawable/ic_baseline_trending_up_24"
-        android:title="@string/topic_menu" />
+        android:title="@string/trending_menu" />
 
     <item
         android:id="@+id/chat_menu"
