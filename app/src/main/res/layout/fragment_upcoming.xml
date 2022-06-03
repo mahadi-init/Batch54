@@ -5,10 +5,11 @@
     android:layout_height="match_parent"
     tools:context=".fragments.UpcomingFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/upcoming_menu" />
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/upcoming_recyclerview"
+        android:layout_width="match_parent"
+        android:layoutAnimation="@anim/layout_fall_down"
+        android:layout_height="match_parent"
+        tools:listitem="@layout/upcoming_cardview" />
 </FrameLayout>
