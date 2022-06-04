@@ -1,23 +1,24 @@
 package com.example.batch54.activities;
 
 import android.os.Bundle;
-import android.view.MenuItem;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.example.batch54.R;
 import com.example.batch54.databinding.ActivityMainBinding;
+import com.example.batch54.enums.MainActivityFragments;
 import com.example.batch54.fragments.ChatFragment;
 import com.example.batch54.fragments.HomeFragment;
 import com.example.batch54.fragments.TrendingFragment;
 import com.example.batch54.fragments.UpcomingFragment;
-import com.google.android.material.navigation.NavigationBarView;
+import com.example.batch54.viewmodels.MainActivityViewmodel;
 
 public class MainActivity extends AppCompatActivity {
+    private MainActivityViewmodel viewmodel;
     private ActivityMainBinding binding;
 
     @Override
@@ -26,35 +27,52 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        binding.bottomNavigation.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                if(item.getItemId() == R.id.home_menu){
-                    setFragment(new HomeFragment());
-                    return true;
-                }
-                if(item.getItemId() == R.id.upcoming_menu){
-                    setFragment(new UpcomingFragment());
-                    return true;
-                }
-                if(item.getItemId() == R.id.trending_menu){
-                    setFragment(new TrendingFragment());
-                    return true;
-                }
-                if(item.getItemId() == R.id.chat_menu){
-                    setFragment(new ChatFragment());
-                    return true;
-                }
+        viewmodel = new ViewModelProvider(this).get(MainActivityViewmodel.class);
 
-                return false;
+        bottomNavigationSelector();
+        currentFragmentObserver();
+    }
+
+    private void bottomNavigationSelector() {
+        binding.bottomNavigation.setOnItemSelectedListener(item -> {
+            if (item.getItemId() == R.id.home_menu) {
+                viewmodel.setActiveFragment(MainActivityFragments.HOME);
+                return true;
             }
+            if (item.getItemId() == R.id.upcoming_menu) {
+                viewmodel.setActiveFragment(MainActivityFragments.UPCOMING);
+                return true;
+            }
+            if (item.getItemId() == R.id.trending_menu) {
+                viewmodel.setActiveFragment(MainActivityFragments.TRENDING);
+                return true;
+            }
+            if (item.getItemId() == R.id.chat_menu) {
+                viewmodel.setActiveFragment(MainActivityFragments.CHAT);
+                return true;
+            }
+
+            return false;
         });
     }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-        setFragment(new HomeFragment());
+    private void currentFragmentObserver() {
+        viewmodel.currentActiveFragment().observe(this, mainActivityFragments -> {
+            switch (mainActivityFragments) {
+                case HOME:
+                    setFragment(new HomeFragment());
+                    break;
+                case UPCOMING:
+                    setFragment(new UpcomingFragment());
+                    break;
+                case TRENDING:
+                    setFragment(new TrendingFragment());
+                    break;
+                case CHAT:
+                    setFragment(new ChatFragment());
+                    break;
+            }
+        });
     }
 
     private void setFragment(Fragment fragment) {
