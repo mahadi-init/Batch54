@@ -10,7 +10,7 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 
 import java.util.ArrayList;
 
-public class UpcomingFragmentViewmodel extends ViewModel {
+public class UpcomingFragmentViewmodel extends ViewModel implements Runnable{
     private final FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     private final MutableLiveData<Boolean> _isSucceed = new MutableLiveData<>();
@@ -48,5 +48,10 @@ public class UpcomingFragmentViewmodel extends ViewModel {
                         _isFailed.setValue(true);
                     }
                 });
+    }
+
+    @Override
+    public void run() {
+        setUpcomingEvents();
     }
 }
