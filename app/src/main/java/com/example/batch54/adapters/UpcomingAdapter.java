@@ -6,7 +6,6 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.batch54.data.FakeData;
 import com.example.batch54.databinding.UpcomingCardviewBinding;
 import com.example.batch54.models.UpcomingModel;
 
@@ -15,8 +14,8 @@ import java.util.ArrayList;
 public class UpcomingAdapter extends RecyclerView.Adapter<UpcomingAdapter.ViewHolder> {
     private final ArrayList<UpcomingModel> upcomingModelArrayList;
 
-    public UpcomingAdapter() {
-        this.upcomingModelArrayList = new FakeData().getUpcomingData();
+    public UpcomingAdapter(ArrayList<UpcomingModel> upcomingModelArrayList) {
+        this.upcomingModelArrayList = upcomingModelArrayList;
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {
