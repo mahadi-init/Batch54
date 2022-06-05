@@ -11,4 +11,8 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="trending_menu">Trending</string>
+    <string name="downvote">Downvote</string>
+    <string name="upvote">Upvote</string>
+    <string name="story_image">story image</string>
+    <string name="add_story">Add Story</string>
 </resources>

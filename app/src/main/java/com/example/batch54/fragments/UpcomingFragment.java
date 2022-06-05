@@ -29,9 +29,8 @@ public class UpcomingFragment extends Fragment {
         viewmodel = new ViewModelProvider(this).get(UpcomingFragmentViewmodel.class);
 
         binding.upcomingRecyclerview.setAdapter(new UpcomingAdapter(new ArrayList<>()));
-        binding.upcomingRecyclerview.setLayoutManager(new LinearLayoutManager(this.getActivity()));
+        binding.upcomingRecyclerview.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-//        viewmodel.setUpcomingEvents();
         Thread thread = new Thread(viewmodel);
         thread.start();
 
