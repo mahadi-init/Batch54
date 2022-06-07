@@ -2,7 +2,9 @@ package com.example.batch54.fragments;
 
 import android.app.Activity;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,23 +12,25 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import androidx.activity.result.ActivityResult;
-import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.batch54.adapters.HomeAdapter;
 import com.example.batch54.databinding.FragmentHomeBinding;
 import com.example.batch54.databinding.StoryLayoutBinding;
+import com.example.batch54.utils.formatter.Formatter;
 import com.example.batch54.viewmodels.HomeFragmentViewmodel;
 import com.example.batch54.viewmodels.StoryLayoutViewmodel;
+import com.google.android.material.snackbar.BaseTransientBottomBar;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class HomeFragment extends Fragment {
     private FragmentHomeBinding binding;
@@ -34,36 +38,64 @@ public class HomeFragment extends Fragment {
     private StoryLayoutViewmodel storyViewmodel;
     private Dialog dialog;
     private StoryLayoutBinding storyBinding;
+    private Uri imageUri = null;
+    private String login_name;
+    private final String todayDate = Formatter.getTodayDate();
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        binding = FragmentHomeBinding.inflate(inflater,container,false);
-        storyBinding = StoryLayoutBinding.inflate(inflater,container,false);
+        binding = FragmentHomeBinding.inflate(inflater, container, false);
+        storyBinding = StoryLayoutBinding.inflate(inflater, container, false);
         viewmodel = new ViewModelProvider(this).get(HomeFragmentViewmodel.class);
         storyViewmodel = new ViewModelProvider(this).get(StoryLayoutViewmodel.class);
 
+        SharedPreferences sharedpreferences = this.requireActivity().getSharedPreferences("login_data", Context.MODE_PRIVATE);
+        login_name = sharedpreferences.getString("login_name", "DEFAULT");
+
+
         initializeDialog();
         homeObservers();
-        storyObservers();
 
         binding.homeRecyclerview.setAdapter(new HomeAdapter(new ArrayList<>()));
         binding.homeRecyclerview.setLayoutManager(new LinearLayoutManager(this.getActivity()));
 
-        binding.extendedFab.setOnClickListener(v -> dialog.show());
-        storyBinding.buttonLoadPicture.setOnClickListener(v -> {
-            openGallery();
+        binding.extendedFab.setOnClickListener(v -> {
+            storyBinding.name.setText(login_name);
+            storyBinding.date.setText(todayDate);
+            dialog.show();
         });
 
+        storyBinding.buttonLoadPicture.setOnClickListener(v -> openGallery());
+
+        Thread thread = new Thread(storyViewmodel);
         storyBinding.confirm.setOnClickListener(v -> {
+            if (imageUri != null) {
+                storyViewmodel.setValues(
+                        imageUri,
+                        Objects.requireNonNull(storyBinding.title.getText()).toString(),
+                        login_name,
+                        todayDate
+                        );
+
+                thread.start();
+            }
+            else{
+                Snackbar.make(binding.homeFragmentLayout,"Can't Upload!! Image Can't be empty",Snackbar.LENGTH_SHORT).show();
+            }
             dialog.dismiss();
         });
 
+        storyViewmodel.isSucceed().observe(getViewLifecycleOwner(), aBoolean -> {
+            if(aBoolean){
+                Snackbar.make(binding.homeFragmentLayout,"Upload done! refresh",Snackbar.LENGTH_SHORT).show();
+            }
+            else{
+                Snackbar.make(binding.homeFragmentLayout,"Upload failed!!", Snackbar.LENGTH_SHORT).show();
+            }
+        });
+
         return binding.getRoot();
-    }
-
-    private void storyObservers() {
-
     }
 
     private void initializeDialog(){
@@ -80,20 +112,15 @@ public class HomeFragment extends Fragment {
 
     private final ActivityResultLauncher<Intent> galleryActivityResultLauncher = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
-            new ActivityResultCallback<ActivityResult>() {
-                @Override
-                public void onActivityResult(ActivityResult result) {
-                    if (result.getResultCode() == Activity.RESULT_OK){
-                        Intent data = result.getData();
-                        assert data != null;
-                        Uri imageUri = data.getData();
-
-                        storyBinding.image.setImageURI(imageUri);
-                    }
-                    else {
-                        //cancelled
-                        Toast.makeText(getActivity(), "Cancelled...", Toast.LENGTH_SHORT).show();
-                    }
+            result -> {
+                if (result.getResultCode() == Activity.RESULT_OK) {
+                    Intent data = result.getData();
+                    assert data != null;
+                    imageUri = data.getData();
+                    storyBinding.image.setImageURI(imageUri);
+                } else {
+                    //cancelled
+                    Toast.makeText(getActivity(), "Cancelled...", Toast.LENGTH_SHORT).show();
                 }
             }
     );

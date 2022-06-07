@@ -3,24 +3,28 @@ package com.example.batch54.models;
 import android.net.Uri;
 
 public class StoryModel {
-    private String name;
+    private Uri uri;
     private String title;
+    private String author;
     private String date;
-    private Uri image;
+    private String upvote;
+    private String downvote;
 
-    public StoryModel(String name, String title, String date, Uri image) {
-        this.name = name;
+    public StoryModel(Uri uri, String title, String author, String date, String upvote, String downvote) {
+        this.uri = uri;
         this.title = title;
+        this.author = author;
         this.date = date;
-        this.image = image;
+        this.upvote = upvote;
+        this.downvote = downvote;
     }
 
-    public String getName() {
-        return name;
+    public Uri getUri() {
+        return uri;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setUri(Uri uri) {
+        this.uri = uri;
     }
 
     public String getTitle() {
@@ -31,6 +35,14 @@ public class StoryModel {
         this.title = title;
     }
 
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
     public String getDate() {
         return date;
     }
@@ -39,11 +51,19 @@ public class StoryModel {
         this.date = date;
     }
 
-    public Uri getImage() {
-        return image;
+    public String getUpvote() {
+        return upvote;
     }
 
-    public void setImage(Uri image) {
-        this.image = image;
+    public void setUpvote(String upvote) {
+        this.upvote = upvote;
+    }
+
+    public String getDownvote() {
+        return downvote;
+    }
+
+    public void setDownvote(String downvote) {
+        this.downvote = downvote;
     }
 }

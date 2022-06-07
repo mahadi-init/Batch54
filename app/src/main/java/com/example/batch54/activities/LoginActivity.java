@@ -1,6 +1,8 @@
 package com.example.batch54.activities;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
@@ -74,6 +76,12 @@ public class LoginActivity extends AppCompatActivity {
         viewmodel.isLoggedIn().observe(this, aBoolean -> {
             if (aBoolean){
                 binding.progressbar.setVisibility(View.GONE);
+
+                SharedPreferences sharedpreferences = getSharedPreferences("login_data", Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedpreferences.edit();
+                editor.putString("login_name", Objects.requireNonNull(binding.studentName.getText()).toString());
+                editor.apply();
+
                 moveToHomeActivity();
             }
         });

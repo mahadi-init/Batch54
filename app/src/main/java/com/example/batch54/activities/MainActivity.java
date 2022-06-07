@@ -54,6 +54,14 @@ public class MainActivity extends AppCompatActivity {
 
             return false;
         });
+
+        binding.bottomNavigation.setOnItemReselectedListener(item -> {
+            if (item.getItemId() == R.id.home_menu) {
+                viewmodel.setActiveFragment(MainActivityFragments.HOME);
+                finish();
+                startActivity(getIntent());
+            }
+        });
     }
 
     private void currentFragmentObserver() {
