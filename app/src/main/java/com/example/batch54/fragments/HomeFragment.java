@@ -5,6 +5,10 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
@@ -15,18 +19,11 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import android.provider.MediaStore;
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Toast;
-
-import com.example.batch54.R;
 import com.example.batch54.adapters.HomeAdapter;
 import com.example.batch54.databinding.FragmentHomeBinding;
 import com.example.batch54.databinding.StoryLayoutBinding;
 import com.example.batch54.viewmodels.HomeFragmentViewmodel;
+import com.example.batch54.viewmodels.StoryLayoutViewmodel;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
@@ -34,6 +31,7 @@ import java.util.ArrayList;
 public class HomeFragment extends Fragment {
     private FragmentHomeBinding binding;
     private HomeFragmentViewmodel viewmodel;
+    private StoryLayoutViewmodel storyViewmodel;
     private Dialog dialog;
     private StoryLayoutBinding storyBinding;
 
@@ -43,12 +41,14 @@ public class HomeFragment extends Fragment {
         binding = FragmentHomeBinding.inflate(inflater,container,false);
         storyBinding = StoryLayoutBinding.inflate(inflater,container,false);
         viewmodel = new ViewModelProvider(this).get(HomeFragmentViewmodel.class);
+        storyViewmodel = new ViewModelProvider(this).get(StoryLayoutViewmodel.class);
+
+        initializeDialog();
+        homeObservers();
+        storyObservers();
 
         binding.homeRecyclerview.setAdapter(new HomeAdapter(new ArrayList<>()));
         binding.homeRecyclerview.setLayoutManager(new LinearLayoutManager(this.getActivity()));
-
-        setDialog();
-        observers();
 
         binding.extendedFab.setOnClickListener(v -> dialog.show());
         storyBinding.buttonLoadPicture.setOnClickListener(v -> {
@@ -62,7 +62,11 @@ public class HomeFragment extends Fragment {
         return binding.getRoot();
     }
 
-    private void setDialog(){
+    private void storyObservers() {
+
+    }
+
+    private void initializeDialog(){
         dialog = new Dialog(this.getActivity());
         dialog.setContentView(storyBinding.getRoot());
         dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
@@ -94,7 +98,7 @@ public class HomeFragment extends Fragment {
             }
     );
 
-    private void observers() {
+    private void homeObservers() {
         Thread thread = new Thread(viewmodel);
         thread.start();
 
@@ -102,8 +106,7 @@ public class HomeFragment extends Fragment {
                 viewmodel.homeStories().observe(getViewLifecycleOwner(), homeStories ->
                         binding.homeRecyclerview.setAdapter(new HomeAdapter(homeStories))));
 
-        viewmodel.isFailed().observe(getViewLifecycleOwner(), aBoolean -> {
-            Snackbar.make(binding.homeFragmentLayout, "Login Failed", Snackbar.LENGTH_SHORT).show();
-        });
+        viewmodel.isFailed().observe(getViewLifecycleOwner(), aBoolean ->
+                Snackbar.make(binding.homeFragmentLayout, "Can't Load", Snackbar.LENGTH_SHORT).show());
     }
 }
