@@ -15,4 +15,8 @@
     <string name="upvote">Upvote</string>
     <string name="story_image">story image</string>
     <string name="add_story">Add Story</string>
+    <string name="mahadi_hasan">Mahadi Hasan</string>
+    <string name="date">Date</string>
+    <string name="title">Title</string>
+    <string name="load_picture">Load Picture</string>
 </resources>
