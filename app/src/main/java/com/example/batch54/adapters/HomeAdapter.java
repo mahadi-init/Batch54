@@ -9,6 +9,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.batch54.R;
 import com.example.batch54.databinding.HomeCardviewBinding;
 import com.example.batch54.models.HomeModel;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -16,6 +18,8 @@ import java.util.ArrayList;
 public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
 
     private final ArrayList<HomeModel> homeModelArrayList;
+    private static final FirebaseStorage storage = FirebaseStorage.getInstance();
+    private static final StorageReference storageRef = storage.getReference();
 
     public HomeAdapter(ArrayList<HomeModel> homeModelArrayList) {
         this.homeModelArrayList = homeModelArrayList;
@@ -40,13 +44,16 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         HomeModel data = homeModelArrayList.get(position);
-        Picasso.get()
-                .load(R.drawable.diu_logo)
-                .placeholder(R.drawable.progress_animation)
-                .into(holder.binding.homeImage);
         holder.binding.homeTitle.setText(data.getTitle());
         holder.binding.homeAuthor.setText(data.getAuthor());
         holder.binding.homeUploadDate.setText(data.getDate());
+
+        StorageReference imageRef = storageRef.child(data.getUrl());
+
+        imageRef.getDownloadUrl().addOnSuccessListener(uri -> Picasso.get()
+                .load(uri)
+                .placeholder(R.drawable.progress_animation)
+                .into(holder.binding.homeImage));
 
         // TODO: 6/4/2022 after onclick
         // FIXME: 6/4/2022
