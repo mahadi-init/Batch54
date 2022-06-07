@@ -52,6 +52,8 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
 
         imageRef.getDownloadUrl().addOnSuccessListener(uri -> Picasso.get()
                 .load(uri)
+                .resize(600,600)
+                .centerCrop()
                 .placeholder(R.drawable.progress_animation)
                 .into(holder.binding.homeImage));
 
