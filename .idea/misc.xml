@@ -3,15 +3,17 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/androidProjects/Batch54/app/src/main/res/drawable/button_shape.xml" value="0.176" />
         <entry key="..\:/androidProjects/Batch54/app/src/main/res/drawable/ic_baseline_add_circle_24.xml" value="0.152" />
         <entry key="..\:/androidProjects/Batch54/app/src/main/res/drawable/ic_baseline_thumb_down_24.xml" value="0.152" />
         <entry key="..\:/androidProjects/Batch54/app/src/main/res/drawable/ic_baseline_thumb_up_24.xml" value="0.189" />
+        <entry key="..\:/androidProjects/Batch54/app/src/main/res/drawable/message_view_shape.xml" value="0.2055" />
         <entry key="..\:/androidProjects/Batch54/app/src/main/res/drawable/progress_animation.xml" value="0.157" />
         <entry key="..\:/androidProjects/Batch54/app/src/main/res/layout/activity_home.xml" value="0.25416666666666665" />
         <entry key="..\:/androidProjects/Batch54/app/src/main/res/layout/activity_login.xml" value="0.264" />
         <entry key="..\:/androidProjects/Batch54/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
         <entry key="..\:/androidProjects/Batch54/app/src/main/res/layout/activity_start.xml" value="0.25416666666666665" />
-        <entry key="..\:/androidProjects/Batch54/app/src/main/res/layout/fragment_chat.xml" value="0.17777777777777778" />
+        <entry key="..\:/androidProjects/Batch54/app/src/main/res/layout/fragment_chat.xml" value="0.264" />
         <entry key="..\:/androidProjects/Batch54/app/src/main/res/layout/fragment_home.xml" value="0.25416666666666665" />
         <entry key="..\:/androidProjects/Batch54/app/src/main/res/layout/fragment_trending.xml" value="0.25416666666666665" />
         <entry key="..\:/androidProjects/Batch54/app/src/main/res/layout/fragment_upcoming.xml" value="0.25416666666666665" />
