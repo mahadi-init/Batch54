@@ -1,4 +1,4 @@
-package com.example.batch54.adapters;
+package com.example.batch54.ui.fragments.upcoming;
 
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
@@ -7,7 +7,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.batch54.databinding.UpcomingCardviewBinding;
-import com.example.batch54.models.UpcomingModel;
+import com.example.batch54.ui.fragments.upcoming.model.UpcomingModel;
 
 import java.util.ArrayList;
 

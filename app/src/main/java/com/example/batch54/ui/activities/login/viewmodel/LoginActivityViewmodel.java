@@ -1,10 +1,10 @@
-package com.example.batch54.viewmodels;
+package com.example.batch54.ui.activities.login.viewmodel;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.example.batch54.models.LoginInputsCheck;
+import com.example.batch54.ui.activities.login.model.LoginInputsCheck;
 import com.example.batch54.utils.validation.Validity;
 import com.google.firebase.auth.FirebaseAuth;
 

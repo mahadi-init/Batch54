@@ -1,4 +1,4 @@
-package com.example.batch54.activities;
+package com.example.batch54.ui.activities.main;
 
 import android.os.Bundle;
 
@@ -10,12 +10,12 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.batch54.R;
 import com.example.batch54.databinding.ActivityMainBinding;
-import com.example.batch54.enums.MainActivityFragments;
-import com.example.batch54.fragments.ChatFragment;
-import com.example.batch54.fragments.HomeFragment;
-import com.example.batch54.fragments.TrendingFragment;
-import com.example.batch54.fragments.UpcomingFragment;
-import com.example.batch54.viewmodels.MainActivityViewmodel;
+import com.example.batch54.ui.activities.main.enums.MainActivityEnum;
+import com.example.batch54.ui.activities.main.viewmodel.MainActivityViewmodel;
+import com.example.batch54.ui.fragments.chat.ChatFragment;
+import com.example.batch54.ui.fragments.home.HomeFragment;
+import com.example.batch54.ui.fragments.trending.TrendingFragment;
+import com.example.batch54.ui.fragments.upcoming.UpcomingFragment;
 
 public class MainActivity extends AppCompatActivity {
     private MainActivityViewmodel viewmodel;
@@ -36,19 +36,19 @@ public class MainActivity extends AppCompatActivity {
     private void bottomNavigationSelector() {
         binding.bottomNavigation.setOnItemSelectedListener(item -> {
             if (item.getItemId() == R.id.home_menu) {
-                viewmodel.setActiveFragment(MainActivityFragments.HOME);
+                viewmodel.setActiveFragment(MainActivityEnum.HOME);
                 return true;
             }
             if (item.getItemId() == R.id.upcoming_menu) {
-                viewmodel.setActiveFragment(MainActivityFragments.UPCOMING);
+                viewmodel.setActiveFragment(MainActivityEnum.UPCOMING);
                 return true;
             }
             if (item.getItemId() == R.id.trending_menu) {
-                viewmodel.setActiveFragment(MainActivityFragments.TRENDING);
+                viewmodel.setActiveFragment(MainActivityEnum.TRENDING);
                 return true;
             }
             if (item.getItemId() == R.id.chat_menu) {
-                viewmodel.setActiveFragment(MainActivityFragments.CHAT);
+                viewmodel.setActiveFragment(MainActivityEnum.CHAT);
                 return true;
             }
 
@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
 
         binding.bottomNavigation.setOnItemReselectedListener(item -> {
             if (item.getItemId() == R.id.home_menu) {
-                viewmodel.setActiveFragment(MainActivityFragments.HOME);
+                viewmodel.setActiveFragment(MainActivityEnum.HOME);
                 finish();
                 startActivity(getIntent());
             }
@@ -65,8 +65,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void currentFragmentObserver() {
-        viewmodel.currentActiveFragment().observe(this, mainActivityFragments -> {
-            switch (mainActivityFragments) {
+        viewmodel.currentActiveFragment().observe(this, mainActivityEnum -> {
+            switch (mainActivityEnum) {
                 case HOME:
                     setFragment(new HomeFragment());
                     break;

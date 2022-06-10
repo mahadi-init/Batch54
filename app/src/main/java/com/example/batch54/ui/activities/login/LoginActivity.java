@@ -1,17 +1,17 @@
-package com.example.batch54.activities;
+package com.example.batch54.ui.activities.login;
 
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.batch54.databinding.ActivityLoginBinding;
-import com.example.batch54.viewmodels.LoginActivityViewmodel;
+import com.example.batch54.ui.activities.login.viewmodel.LoginActivityViewmodel;
+import com.example.batch54.ui.activities.main.MainActivity;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 

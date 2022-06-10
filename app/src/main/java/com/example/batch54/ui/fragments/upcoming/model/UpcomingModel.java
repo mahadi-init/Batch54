@@ -1,4 +1,4 @@
-package com.example.batch54.models;
+package com.example.batch54.ui.fragments.upcoming.model;
 
 public class UpcomingModel {
     private String title;

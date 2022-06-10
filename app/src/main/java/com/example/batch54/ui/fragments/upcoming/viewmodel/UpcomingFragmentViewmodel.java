@@ -1,16 +1,16 @@
-package com.example.batch54.viewmodels;
+package com.example.batch54.ui.fragments.upcoming.viewmodel;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.example.batch54.models.HomeModel;
+import com.example.batch54.ui.fragments.upcoming.model.UpcomingModel;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 
 import java.util.ArrayList;
 
-public class HomeFragmentViewmodel extends ViewModel implements Runnable{
+public class UpcomingFragmentViewmodel extends ViewModel implements Runnable{
     private final FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     private final MutableLiveData<Boolean> _isSucceed = new MutableLiveData<>();
@@ -23,30 +23,27 @@ public class HomeFragmentViewmodel extends ViewModel implements Runnable{
         return _isFailed;
     }
 
-    private final MutableLiveData<ArrayList<HomeModel>> _homeStories = new MutableLiveData<>();
-    public LiveData<ArrayList<HomeModel>> homeStories() {
-        return _homeStories;
+    private final MutableLiveData<ArrayList<UpcomingModel>> _upcomingEvents = new MutableLiveData<>();
+    public LiveData<ArrayList<UpcomingModel>> upcomingEvents() {
+        return _upcomingEvents;
     }
 
-    private void setHomeStories() {
-        db.collection("stories")
+    public void setUpcomingEvents() {
+        db.collection("upcoming")
                 .get()
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
                         _isSucceed.setValue(true);
 
-                        ArrayList<HomeModel> list = new ArrayList<>();
+                        ArrayList<UpcomingModel> list = new ArrayList<>();
                         for (QueryDocumentSnapshot document : task.getResult()) {
-                            list.add(new HomeModel(
-                                    document.getString("image"),
+                            list.add(new UpcomingModel(
                                     document.getString("title"),
-                                    document.getString("author"),
                                     document.getString("date"),
-                                    document.getString("upvote"),
-                                    document.getString("downvote")
+                                    document.getString("details")
                             ));
                         }
-                        _homeStories.setValue(list);
+                        _upcomingEvents.setValue(list);
                     } else {
                         _isFailed.setValue(true);
                     }
@@ -55,6 +52,6 @@ public class HomeFragmentViewmodel extends ViewModel implements Runnable{
 
     @Override
     public void run() {
-        setHomeStories();
+        setUpcomingEvents();
     }
 }
