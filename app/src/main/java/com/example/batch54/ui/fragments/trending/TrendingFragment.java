@@ -1,4 +1,4 @@
-package com.example.batch54.fragments;
+package com.example.batch54.ui.fragments.trending;
 
 import android.os.Bundle;
 

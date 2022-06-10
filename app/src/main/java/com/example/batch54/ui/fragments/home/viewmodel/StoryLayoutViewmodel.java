@@ -1,4 +1,4 @@
-package com.example.batch54.viewmodels;
+package com.example.batch54.ui.fragments.home.viewmodel;
 
 import android.net.Uri;
 
@@ -7,7 +7,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.example.batch54.models.StoryModel;
+import com.example.batch54.ui.fragments.home.model.StoryModel;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;

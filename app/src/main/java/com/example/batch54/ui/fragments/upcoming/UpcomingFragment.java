@@ -1,4 +1,4 @@
-package com.example.batch54.fragments;
+package com.example.batch54.ui.fragments.upcoming;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -7,13 +7,11 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import com.example.batch54.adapters.UpcomingAdapter;
 import com.example.batch54.databinding.FragmentUpcomingBinding;
-import com.example.batch54.viewmodels.UpcomingFragmentViewmodel;
+import com.example.batch54.ui.fragments.upcoming.viewmodel.UpcomingFragmentViewmodel;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;

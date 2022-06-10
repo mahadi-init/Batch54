@@ -1,4 +1,4 @@
-package com.example.batch54.models;
+package com.example.batch54.ui.fragments.home.model;
 
 import android.net.Uri;
 

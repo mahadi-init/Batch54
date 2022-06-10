@@ -1,4 +1,4 @@
-package com.example.batch54.models;
+package com.example.batch54.ui.activities.login.model;
 
 public class LoginInputsCheck {
     private Boolean name;

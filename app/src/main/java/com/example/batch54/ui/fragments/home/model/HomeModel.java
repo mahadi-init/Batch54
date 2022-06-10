@@ -1,4 +1,4 @@
-package com.example.batch54.models;
+package com.example.batch54.ui.fragments.home.model;
 
 public class HomeModel {
     private String url;

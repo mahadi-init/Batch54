@@ -1,4 +1,4 @@
-package com.example.batch54.fragments;
+package com.example.batch54.ui.fragments.home;
 
 import android.app.Activity;
 import android.app.Dialog;
@@ -16,17 +16,14 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import com.example.batch54.adapters.HomeAdapter;
 import com.example.batch54.databinding.FragmentHomeBinding;
 import com.example.batch54.databinding.StoryLayoutBinding;
+import com.example.batch54.ui.fragments.home.viewmodel.HomeFragmentViewmodel;
+import com.example.batch54.ui.fragments.home.viewmodel.StoryLayoutViewmodel;
 import com.example.batch54.utils.formatter.Formatter;
-import com.example.batch54.viewmodels.HomeFragmentViewmodel;
-import com.example.batch54.viewmodels.StoryLayoutViewmodel;
-import com.google.android.material.snackbar.BaseTransientBottomBar;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;

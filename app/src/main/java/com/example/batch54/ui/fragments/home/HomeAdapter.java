@@ -1,4 +1,4 @@
-package com.example.batch54.adapters;
+package com.example.batch54.ui.fragments.home;
 
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.batch54.R;
 import com.example.batch54.databinding.HomeCardviewBinding;
-import com.example.batch54.models.HomeModel;
+import com.example.batch54.ui.fragments.home.model.HomeModel;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
