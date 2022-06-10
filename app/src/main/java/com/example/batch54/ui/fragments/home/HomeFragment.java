@@ -21,6 +21,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.batch54.databinding.FragmentHomeBinding;
 import com.example.batch54.databinding.StoryLayoutBinding;
+import com.example.batch54.ui.fragments.home.adapter.HomeAdapter;
 import com.example.batch54.ui.fragments.home.viewmodel.HomeFragmentViewmodel;
 import com.example.batch54.ui.fragments.home.viewmodel.StoryLayoutViewmodel;
 import com.example.batch54.utils.formatter.Formatter;
@@ -62,6 +63,9 @@ public class HomeFragment extends Fragment {
             storyBinding.date.setText(todayDate);
             dialog.show();
         });
+
+        storyBinding.name.setEnabled(false);
+        storyBinding.date.setEnabled(false);
 
         storyBinding.buttonLoadPicture.setOnClickListener(v -> openGallery());
 

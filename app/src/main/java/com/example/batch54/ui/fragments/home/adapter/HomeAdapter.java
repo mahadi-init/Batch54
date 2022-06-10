@@ -1,4 +1,4 @@
-package com.example.batch54.ui.fragments.home;
+package com.example.batch54.ui.fragments.home.adapter;
 
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
@@ -53,7 +53,6 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
         imageRef.getDownloadUrl().addOnSuccessListener(uri -> Picasso.get()
                 .load(uri)
                 .resize(600,600)
-                .centerCrop()
                 .placeholder(R.drawable.progress_animation)
                 .into(holder.binding.homeImage));
 
