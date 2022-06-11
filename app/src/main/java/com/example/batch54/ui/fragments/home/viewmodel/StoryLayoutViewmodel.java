@@ -58,8 +58,6 @@ public class StoryLayoutViewmodel extends ViewModel implements Runnable {
                     story.put("title", _storyModel.getValue().getTitle());
                     story.put("author", _storyModel.getValue().getAuthor());
                     story.put("date", _storyModel.getValue().getDate());
-                    story.put("upvote", _storyModel.getValue().getUpvote());
-                    story.put("downvote", _storyModel.getValue().getDownvote());
 
                     db.collection("stories").document()
                             .set(story)
