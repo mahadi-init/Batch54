@@ -7,16 +7,12 @@ public class StoryModel {
     private String title;
     private String author;
     private String date;
-    private String upvote;
-    private String downvote;
 
     public StoryModel(Uri uri, String title, String author, String date, String upvote, String downvote) {
         this.uri = uri;
         this.title = title;
         this.author = author;
         this.date = date;
-        this.upvote = upvote;
-        this.downvote = downvote;
     }
 
     public Uri getUri() {
@@ -49,21 +45,5 @@ public class StoryModel {
 
     public void setDate(String date) {
         this.date = date;
-    }
-
-    public String getUpvote() {
-        return upvote;
-    }
-
-    public void setUpvote(String upvote) {
-        this.upvote = upvote;
-    }
-
-    public String getDownvote() {
-        return downvote;
-    }
-
-    public void setDownvote(String downvote) {
-        this.downvote = downvote;
     }
 }

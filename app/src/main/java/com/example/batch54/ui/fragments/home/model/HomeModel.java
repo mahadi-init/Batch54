@@ -5,16 +5,12 @@ public class HomeModel {
     private String title;
     private String author;
     private String date;
-    private String upvote;
-    private String downvote;
 
-    public HomeModel(String url, String title, String author, String date, String upvote, String downvote) {
+    public HomeModel(String url, String title, String author, String date) {
         this.url = url;
         this.title = title;
         this.author = author;
         this.date = date;
-        this.upvote = upvote;
-        this.downvote = downvote;
     }
 
     public String getUrl() {
@@ -47,21 +43,5 @@ public class HomeModel {
 
     public void setDate(String date) {
         this.date = date;
-    }
-
-    public String getUpvote() {
-        return upvote;
-    }
-
-    public void setUpvote(String upvote) {
-        this.upvote = upvote;
-    }
-
-    public String getDownvote() {
-        return downvote;
-    }
-
-    public void setDownvote(String downvote) {
-        this.downvote = downvote;
     }
 }

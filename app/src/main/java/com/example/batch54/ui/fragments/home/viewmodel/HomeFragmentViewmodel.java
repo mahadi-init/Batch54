@@ -41,9 +41,7 @@ public class HomeFragmentViewmodel extends ViewModel implements Runnable{
                                     document.getString("image"),
                                     document.getString("title"),
                                     document.getString("author"),
-                                    document.getString("date"),
-                                    document.getString("upvote"),
-                                    document.getString("downvote")
+                                    document.getString("date")
                             ));
                         }
                         _homeStories.setValue(list);

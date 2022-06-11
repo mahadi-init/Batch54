@@ -55,11 +55,6 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
                 .resize(600,600)
                 .placeholder(R.drawable.progress_animation)
                 .into(holder.binding.homeImage));
-
-        // TODO: 6/4/2022 after onclick
-        // FIXME: 6/4/2022
-        holder.binding.upvote.setText(data.getUpvote());
-        holder.binding.downvote.setText(data.getDownvote());
     }
 
     @Override
