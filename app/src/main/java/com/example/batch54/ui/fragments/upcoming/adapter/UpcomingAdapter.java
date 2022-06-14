@@ -1,4 +1,4 @@
-package com.example.batch54.ui.fragments.upcoming;
+package com.example.batch54.ui.fragments.upcoming.adapter;
 
 import android.view.LayoutInflater;
 import android.view.ViewGroup;

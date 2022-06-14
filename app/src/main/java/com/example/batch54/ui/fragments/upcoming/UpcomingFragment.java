@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.batch54.databinding.FragmentUpcomingBinding;
+import com.example.batch54.ui.fragments.upcoming.adapter.UpcomingAdapter;
 import com.example.batch54.ui.fragments.upcoming.viewmodel.UpcomingFragmentViewmodel;
 import com.google.android.material.snackbar.Snackbar;
 
