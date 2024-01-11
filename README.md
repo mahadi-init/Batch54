@@ -6,7 +6,6 @@ Build with Java and Firebase
 
 
 # Screenshots
-<img src="screenshots\home.png" height='400'>
 <img src="screenshots\upcoming.png" height='400'>
 <img src="screenshots\trending.png" height='400'>
 
